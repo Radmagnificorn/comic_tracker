@@ -1,0 +1,85 @@
+body {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#wrapper {
+	width: 500px;
+}
+
+.urltoken {
+	background-color: #fffdcd;
+	border: 1px solid black;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.domainId {
+	background-color: transparent;
+	border: none;
+	color: #57a700;
+	display: inline-block;
+}
+
+.urltoken.numeric {
+	color: #00a0ff;
+}
+
+.step {
+
+}
+
+.heading {
+	color: #777777;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+#stepContainer {
+	height: 100px;
+	position: relative;
+}
+
+.step {
+
+	width: 482px;
+	border: 1px solid #999999;
+	padding: 5px;
+	margin: 2px 0;
+	background-color: #caf0ff;
+	opacity: 0.0;
+	transition: 0.25s;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	&.show {
+	  opacity: 1.0;
+	  height: auto;
+	  transition: 0.25s;
+	}
+}
+
+
+
+ul {
+	list-style-type: none;
+	padding-left: 10px;
+}
+
+a {
+	color: #555555;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #999999;
+}
+
+.delButton {
+	float: right;
+	text-decoration: none;
+	color: #880005;
+	font-weight: bold;
+}
+

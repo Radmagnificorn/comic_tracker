@@ -22,7 +22,7 @@
 	  	"128": "images/icon.png"
 	},
 	"background": {
-	  "scripts": ["accessStorageEP.js"],
+	  "scripts": ["access-storage-ep.js"],
 	  "persistent": false
 	},
 	"permissions": ["tabs"],
