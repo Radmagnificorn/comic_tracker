@@ -55,16 +55,24 @@ var app;
 
             var seriesList = (function() {
 
-                var seriesDataList = localStorage.getItem("seriesList");
+                var seriesDataList = loadSeriesDataList();
 
-                if (!seriesDataList) {
-                    seriesDataList = [];
-                } else {
-                    try {
-                        seriesDataList = JSON.parse(seriesDataList);
-                    } catch(e) {
+
+
+                function loadSeriesDataList() {
+                    var seriesDataList = localStorage.getItem("seriesList");
+
+                    if (!seriesDataList) {
                         seriesDataList = [];
+                    } else {
+                        try {
+                            seriesDataList = JSON.parse(seriesDataList);
+                        } catch(e) {
+                            seriesDataList = [];
+                        }
                     }
+
+                    return seriesDataList;
                 }
 
                 function saveSeriesList() {
@@ -77,7 +85,7 @@ var app;
                     seriesDataList.forEach(function (seriesData) {
                         var pageNumber = urlParser.parsePageNumber(seriesData);
                         markup += "<li><a href='" + seriesData.lastUrl + "'>" + seriesData.title + "(" + pageNumber + ")" + "</a>";
-                        markup += "<a href='#' class='delButton' data-delId=' target='_blank'" + seriesDataList.indexOf(seriesData) + "'>x</a>" +"</li>";
+                        markup += "<a href='#' class='delButton' data-delId=' target='_blank'" + seriesDataList.indexOf(seriesData) + "'>delete</a>" +"</li>";
                         delId++;
                     });
 

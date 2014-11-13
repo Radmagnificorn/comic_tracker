@@ -3,13 +3,10 @@ define(
 
     function () {
 
-        var SelectionMode = "none";
-
-
         var generateVisualUrl = function (url) {
             var tokenizedURL = parseURL(url);
 
-            var markup = tokenizedURL.protocol + "://"; //<div class='domainId urltoken'>" + tokenizedURL.domain + "</div> / ";
+            var markup = tokenizedURL.protocol + "://";
             var index = 0;
             tokenizedURL.urlTokens.forEach(function(token) {
                 markup += "<div data-index='" + index + "' class='urltoken";
@@ -30,7 +27,7 @@ define(
                 protocol: purl[0],
                 domain: durl[0]
             };
-            //durl.shift(); //drop domain from durl
+
             retUrl.urlTokens = durl;
 
             return retUrl;
@@ -47,7 +44,6 @@ define(
         }
 
         var splitSeriesSearchString = function (seriesId) {
-            alert("making it into findSeriesSearchString");
 
             var page = seriesId.match(/(\d+)/g) + "";
             var pagePos = seriesId.indexOf(page);
@@ -61,15 +57,6 @@ define(
             return subId
         }
 
-        function findDomain(url) {
-            return url.match(/http:\/\/(.*?)\//g);
-        }
-
-        function findPageMatches(url) {
-            var tokens = url.split("/");
-            var matches = tokens.pop().match(/(\d+)/g);
-            return matches;
-        }
 
         var public = {
             generateVisualUrl: generateVisualUrl,

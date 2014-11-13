@@ -1,5 +1,11 @@
+
+$primary-color: #028e9b;
+$secondary-color: #00cc00;
+$accent-color: #ff6e00;
+
 body {
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: linear-gradient(135deg, desaturate(lighten($primary-color, 60%),60%), #ffffff);
 }
 
 #wrapper {
@@ -11,6 +17,11 @@ body {
 	border: 1px solid black;
 	display: inline-block;
 	cursor: pointer;
+
+    &.numeric {
+	  color: #00a0ff;
+	}
+
 }
 
 .domainId {
@@ -20,29 +31,30 @@ body {
 	display: inline-block;
 }
 
-.urltoken.numeric {
-	color: #00a0ff;
-}
-
 
 .heading {
-	color: #777777;
+	color: $accent-color;
 	font-weight: bold;
-	font-size: 16px;
+	font-size: 20px;
 }
 
 #stepContainer {
 	position: relative;
-  	height: 50px;
+  	height: 70px;
+  	background-color: $secondary-color;
+
+  	.heading {
+	  color: #ffffff;
+	  font-size: 16px;
+	}
 }
 
 .step {
 
 	width: 482px;
-	border: 1px solid #999999;
-	padding: 5px;
+	padding: 10px;
 	margin: 2px 0;
-	background-color: #caf0ff;
+	height: 70px;
   	opacity: 0.0;
 	transition: 0.25s;
 	position: absolute;
@@ -59,30 +71,34 @@ body {
 
 
 ul {
-	list-style-type: none;
+	list-style-type: disc;
 	padding-left: 0;
+  	margin-left: 20px;
 
   li {
-	margin: 3px 0 3px 0;
-	padding: 3px 5px 3px 5px;
-	background-color: #eeeeee;
+	margin: 3px 0 3px 20px;
+	padding: 5px;
+	background: linear-gradient(90deg, $primary-color, rgba(0,0,0,0));
+	font-size: 15px;
+	color: $secondary-color;
+
+	&:hover {
+	  opacity: 0.85;
+	}
   }
 }
 
 a {
-	color: #555555;
+	color: lighten($accent-color, 50%);
 	font-weight: bold;
 	text-decoration: none;
 }
 
-a:hover {
-	color: #999999;
-}
 
 .delButton {
 	float: right;
 	text-decoration: none;
-	color: #880005;
+	color: $accent-color;
 	font-weight: bold;
 }
 
