@@ -11,37 +11,35 @@ var app;
             var init = function () {
 
                 // event handlers
-                $("#addSeries").click(function () {
-                    $("#step1").addClass("show");
-                    var saveData = {};
 
-                    $("#saveTitle").click(function () {
-                        saveData.title = $("#seriesTitle").val();
+                var saveData = {};
 
-                        chrome.tabs.getSelected(null, function(tab) {
+                $("#saveTitle").click(function () {
+                    saveData.title = $("#seriesTitle").val();
 
-                            $("#urlselector").html(urlParser.generateVisualUrl(tab.url));
-                            saveData.lastUrl = tab.url;
+                    chrome.tabs.getSelected(null, function(tab) {
 
-                            $("#urlselector").on("click", ".urltoken", function (event) {
-                                saveData.seriesIdentifier = $(this).data("index");
+                        $("#urlselector").html(urlParser.generateVisualUrl(tab.url));
+                        saveData.lastUrl = tab.url;
 
-                                $("#pageselector").html(urlParser.generateVisualUrl(tab.url));
-                                $("#step3").addClass("show");
+                        $("#urlselector").on("click", ".urltoken", function (event) {
+                            saveData.seriesIdentifier = $(this).data("index");
 
-                                $("#pageselector").on("click", ".urltoken", function (event) {
-                                    saveData.pageIdentifier = $(this).data("index");
+                            $("#pageselector").html(urlParser.generateVisualUrl(tab.url));
+                            $("#step3").addClass("show");
 
+                            $("#pageselector").on("click", ".urltoken", function (event) {
+                                saveData.pageIdentifier = $(this).data("index");
 
-                                    $("#seriesList").html(seriesList.addSeries(saveData));
-                                });
+                                $("#seriesList").html(seriesList.addSeries(saveData));
                             });
-
-                            $("#step2").addClass("show");
-
                         });
+
+                        $("#step2").addClass("show");
+
                     });
                 });
+
 
 
 
@@ -105,9 +103,9 @@ var app;
 
                 function formatSaveData(saveData) {
 
-
                     var tUrl = urlParser.parseUrl(saveData.lastUrl);
                     var seriesString = tUrl.urlTokens[saveData.seriesIdentifier];
+
                     if (saveData.seriesIdentifier === saveData.pageIdentifier) {
                         saveData.seriesSearchString = urlParser.splitSeriesSearchString(seriesString);
                     } else {
@@ -127,8 +125,6 @@ var app;
                 };
                 return public;
             })();
-
-
 
             var public = {
                 init: init
