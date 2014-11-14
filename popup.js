@@ -84,8 +84,8 @@ var app;
                     var delId = 0;
                     seriesDataList.forEach(function (seriesData) {
                         var pageNumber = urlParser.parsePageNumber(seriesData);
-                        markup += "<li><a href='" + seriesData.lastUrl + "'>" + seriesData.title + "(" + pageNumber + ")" + "</a>";
-                        markup += "<a href='#' class='delButton' data-delId=' target='_blank'" + seriesDataList.indexOf(seriesData) + "'>delete</a>" +"</li>";
+                        markup += "<li><a href='" + seriesData.lastUrl + "' target='_blank'>" + seriesData.title + "(" + pageNumber + ")" + "</a>";
+                        markup += "<a href='#' class='delButton' data-delId='" + seriesDataList.indexOf(seriesData) + "'>delete</a>" + "</li>";
                         delId++;
                     });
 

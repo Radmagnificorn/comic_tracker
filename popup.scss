@@ -42,6 +42,7 @@ body {
 	position: relative;
   	height: 70px;
   	background-color: $secondary-color;
+  	width: 482px;
 
   	.heading {
 	  color: #ffffff;
@@ -50,21 +51,24 @@ body {
 }
 
 .step {
-
-	width: 482px;
+  	width: auto;
 	padding: 10px;
 	margin: 2px 0;
 	height: 70px;
+  	background-color: $secondary-color;
   	opacity: 0.0;
+  	display: none;
 	transition: 0.25s;
 	position: absolute;
 	top: 0;
 	left: 0;
 
 	&.show {
+	  display: block;
 	  opacity: 1.0;
 	  height: auto;
 	  transition: 0.25s;
+
 	}
 }
 
