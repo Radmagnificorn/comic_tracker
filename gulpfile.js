@@ -2,13 +2,13 @@ var gulp = require('gulp'),
     sass = require('gulp-ruby-sass');
 
 gulp.task('styles', function () {
-    return gulp.src('src/*.scss')
+    return gulp.src('src/styles/*.scss')
         .pipe(sass({style: 'expanded'}))
         .pipe(gulp.dest('build/styles'));
 });
 
 gulp.task('scripts', function () {
-    return gulp.src('src/styles/*.js')
+    return gulp.src('src/*.js')
         .pipe(gulp.dest('build'));
 });
 

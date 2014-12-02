@@ -13,15 +13,22 @@ body {
 }
 
 .urltoken {
-	background-color: #fffdcd;
+	background-color: #ffffff;
 	border: 1px solid black;
 	display: inline-block;
 	cursor: pointer;
+  	padding: 3px;
 
     &.numeric {
 	  color: #00a0ff;
 	}
 
+  	&:hover {
+	  opacity: 0.75;
+	  transition: 0.25s;
+	}
+
+	transition: 0.25s;
 }
 
 .domainId {

@@ -2,9 +2,9 @@
  * Created by Stephen on 11/10/2014.
  */
 
-require(["parser"], function (urlParser) {
+require(["parser", "series_data", "UrlData"], function (urlParser, SeriesData, UrlData) {
     chrome.runtime.sendMessage({method: "getUrls"}, function(seriesDataList) {
-        var currentUrl = window.location.href;
+        var currentUrl = new UrlData(window.location.href);
         var seriesData = findSeriesMatch(seriesDataList, currentUrl);
 
         if (seriesData) {

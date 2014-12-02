@@ -4,7 +4,7 @@
 var app;
 
 
-    require(["parser"], function (urlParser) {
+    require(["parser", 'series_data', 'url_data'], function (urlParser, SeriesData, UrlData) {
 
         app = (function () {
 
@@ -22,13 +22,13 @@ var app;
                         $("#urlselector").html(urlParser.generateVisualUrl(tab.url));
                         saveData.lastUrl = tab.url;
 
-                        $("#urlselector").on("click", ".urltoken", function (event) {
+                        $("#urlselector").on("click", ".urltoken", function () {
                             saveData.seriesIdentifier = $(this).data("index");
 
                             $("#pageselector").html(urlParser.generateVisualUrl(tab.url));
                             $("#step3").addClass("show");
 
-                            $("#pageselector").on("click", ".urltoken", function (event) {
+                            $("#pageselector").on("click", ".urltoken", function () {
                                 saveData.pageIdentifier = $(this).data("index");
 
                                 $("#seriesList").html(seriesList.addSeries(saveData));
@@ -51,28 +51,27 @@ var app;
 
                 $("#seriesList").html(seriesList.generateUI());
 
-            }
+            };
 
             var seriesList = (function() {
 
                 var seriesDataList = loadSeriesDataList();
 
-
-
                 function loadSeriesDataList() {
-                    var seriesDataList = localStorage.getItem("seriesList");
-
-                    if (!seriesDataList) {
-                        seriesDataList = [];
-                    } else {
+                    var seriesRawData = localStorage.getItem("seriesList");
+                    sDataList = [];
+                    if (seriesRawData) {
                         try {
-                            seriesDataList = JSON.parse(seriesDataList);
+                            var loadDataList = JSON.parse(seriesRawData);
+                            var sDataList = loadDataList.map(function (loadData) {
+                                return new SeriesData(loadData);
+                            });
                         } catch(e) {
-                            seriesDataList = [];
+                            alert(e);
                         }
                     }
 
-                    return seriesDataList;
+                    return sDataList;
                 }
 
                 function saveSeriesList() {
@@ -83,7 +82,7 @@ var app;
                     var markup = "<ul>";
                     var delId = 0;
                     seriesDataList.forEach(function (seriesData) {
-                        var pageNumber = urlParser.parsePageNumber(seriesData);
+                        var pageNumber = seriesData.getFurthestRead();
                         markup += "<li><a href='" + seriesData.lastUrl + "' target='_blank'>" + seriesData.title + "(" + pageNumber + ")" + "</a>";
                         markup += "<a href='#' class='delButton' data-delId='" + seriesDataList.indexOf(seriesData) + "'>delete</a>" + "</li>";
                         delId++;
@@ -92,7 +91,7 @@ var app;
                     markup += "</ul>";
 
                     return markup;
-                }
+                };
 
                 var addSeries = function (saveData) {
 
@@ -107,7 +106,7 @@ var app;
                     seriesDataList.splice(index, 1);
                     saveSeriesList();
                     return generateUI();
-                }
+                };
 
                 function formatSaveData(saveData) {
 
