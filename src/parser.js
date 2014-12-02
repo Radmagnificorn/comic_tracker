@@ -21,8 +21,9 @@ define(
 
         var parseURL = function(urlIn) {
 
-            var purl = urlIn.split("://");
-            var durl = purl[1].split("/");
+            var purl = urlIn.split("://"),
+                durl = purl[1].split("/");
+
             var retUrl = {
                 protocol: purl[0],
                 domain: durl[0]
@@ -34,8 +35,8 @@ define(
         };
 
         var parsePageNumber = function (/*seriesDef, url*/) {
-            var seriesDef = arguments[0];
-            var url = arguments[1] ? arguments[1] : seriesDef.lastUrl;
+            var seriesDef = arguments[0],
+                url = arguments[1] ? arguments[1] : seriesDef.lastUrl;
 
             var purl = this.parseUrl(url);
             var pageId = purl.urlTokens[seriesDef.pageIdentifier];
