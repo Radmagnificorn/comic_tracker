@@ -8,7 +8,7 @@ gulp.task('styles', function () {
 });
 
 gulp.task('scripts', function () {
-    return gulp.src('src/*.js')
+    return gulp.src('src/styles/*.js')
         .pipe(gulp.dest('build'));
 });
 
@@ -18,8 +18,8 @@ gulp.task('markup', function () {
 });
 
 gulp.task('config', function () {
-    return gulp.src('src/*.json')
+    return gulp.src('src/config/*.json')
         .pipe(gulp.dest('build'));
-})
+});
 
 gulp.task('build', ['styles', 'scripts', 'markup', 'config']);
