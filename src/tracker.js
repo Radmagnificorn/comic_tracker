@@ -2,13 +2,16 @@
  * Created by Stephen on 11/10/2014.
  */
 
-require(["parser", "series_data", "UrlData"], function (urlParser, SeriesData, UrlData) {
-    chrome.runtime.sendMessage({method: "getUrls"}, function(seriesDataList) {
+require(['parser', 'series_data', 'url_data'], function (urlParser, SeriesData, UrlData) {
+    chrome.runtime.sendMessage({method: 'getUrls'}, function(seriesDataIn) {
+        var seriesDataList = seriesDataIn.map(function (seriesData) {
+            return new SeriesData(seriesData);
+        });
         var currentUrl = new UrlData(window.location.href);
         var seriesData = findSeriesMatch(seriesDataList, currentUrl);
 
         if (seriesData) {
-            showHelperUI(seriesData.title, urlParser.parsePageNumber(seriesData, currentUrl));
+            showHelperUI(seriesData.title, currentUrl.parsePageNumber(seriesData.pageIdentifier));
             seriesData.lastUrl = currentUrl;
             saveSeries(seriesData);
         }
@@ -16,15 +19,14 @@ require(["parser", "series_data", "UrlData"], function (urlParser, SeriesData, U
 
     function findSeriesMatch(seriesList, pageUrl) {
 
-        var curlToken = urlParser.parseUrl(pageUrl);
-        var match;
+        var match = null;
 
         seriesList.forEach(function (series) {
 
             var sToken = urlParser.parseUrl(series.lastUrl);
             var seriesSearch = series.seriesSearchString;
-            var cSeriesId = curlToken.urlTokens[series.seriesIdentifier];
-            if (sToken.domain == curlToken.domain) {
+            var cSeriesId = pageUrl.urlTokens[series.seriesIdentifier];
+            if (sToken.domain == pageUrl.domain) {
 
                 if (cSeriesId.indexOf(seriesSearch) > -1) {
                     match = series;

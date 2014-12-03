@@ -4,6 +4,7 @@ define(
     function () {
 
         var generateVisualUrl = function (url) {
+
             var tokenizedURL = parseURL(url);
 
             var markup = tokenizedURL.protocol + "://";

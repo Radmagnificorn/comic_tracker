@@ -31,6 +31,9 @@ define("url_data", [], function () {
                 searchString = seriesIdString.substring(0, pagePos);
             }
             return searchString;
+        },
+        toString: function () {
+            return this.url;
         }
     };
 
