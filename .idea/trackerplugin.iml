@@ -8,5 +8,6 @@
     <orderEntry type="library" name="jQuery-2.0.0" level="application" />
     <orderEntry type="library" name="chrome-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="requirejs-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="comic_tracker_prototype node_modules" level="project" />
   </component>
 </module>

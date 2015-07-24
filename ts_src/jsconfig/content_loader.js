@@ -1,0 +1,30 @@
+﻿/*
+changes require.js loading context from injected page to content script
+code to override require.load from
+https://github.com/nonowarn/content-script-with-requirejs
+*/
+
+
+require.load = function (context, moduleName, url) {
+    var xhr = new XMLHttpRequest(),
+        evalResponseText = function (xhr) {
+            eval(xhr.responseText);
+            context.completeLoad(moduleName);
+        };
+
+    xhr.open("GET", url, true);
+    xhr.onreadystatechange = function (e) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // we have to specifically pass the window context or underscore
+            // will fail since it defines "root = this"
+            evalResponseText.call(window, xhr);
+        }
+    };
+    xhr.send(null);
+};
+
+
+var extUrl = chrome.extension.getURL("/");
+//require.config({baseUrl: extUrl});
+
+require({baseUrl: extUrl}, ["tracker"], function(tracker) {});

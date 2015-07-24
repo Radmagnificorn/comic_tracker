@@ -1,0 +1,115 @@
+
+$primary-color: #028e9b;
+$secondary-color: #00cc00;
+$accent-color: #ff6e00;
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: linear-gradient(135deg, desaturate(lighten($primary-color, 60%),60%), #ffffff);
+}
+
+#wrapper {
+	width: 500px;
+}
+
+.urltoken {
+	background-color: #ffffff;
+	border: 1px solid black;
+	display: inline-block;
+	cursor: pointer;
+  	padding: 3px;
+
+    &.numeric {
+	  color: #00a0ff;
+	}
+
+  	&:hover {
+	  opacity: 0.75;
+	  transition: 0.25s;
+	}
+
+	transition: 0.25s;
+}
+
+.domainId {
+	background-color: transparent;
+	border: none;
+	color: #57a700;
+	display: inline-block;
+}
+
+
+.heading {
+	color: $accent-color;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+#stepContainer {
+	position: relative;
+  	height: 70px;
+  	background-color: $secondary-color;
+  	width: 482px;
+
+  	.heading {
+	  color: #ffffff;
+	  font-size: 16px;
+	}
+}
+
+.step {
+  	width: auto;
+	padding: 10px;
+	margin: 2px 0;
+	height: 70px;
+  	background-color: $secondary-color;
+  	opacity: 0.0;
+  	display: none;
+	transition: 0.25s;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	&.show {
+	  display: block;
+	  opacity: 1.0;
+	  height: auto;
+	  transition: 0.25s;
+
+	}
+}
+
+
+
+ul {
+	list-style-type: disc;
+	padding-left: 0;
+  	margin-left: 20px;
+
+  li {
+	margin: 3px 0 3px 20px;
+	padding: 5px;
+	background: linear-gradient(90deg, $primary-color, rgba(0,0,0,0));
+	font-size: 15px;
+	color: $secondary-color;
+
+	&:hover {
+	  opacity: 0.85;
+	}
+  }
+}
+
+a {
+	color: lighten($accent-color, 50%);
+	font-weight: bold;
+	text-decoration: none;
+}
+
+
+.delButton {
+	float: right;
+	text-decoration: none;
+	color: $accent-color;
+	font-weight: bold;
+}
+

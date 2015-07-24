@@ -1,0 +1,83 @@
+﻿body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: linear-gradient(135deg, #dfeff0, #ffffff); }
+
+#wrapper {
+  width: 500px; }
+
+.urltoken {
+  background-color: #ffffff;
+  border: 1px solid black;
+  display: inline-block;
+  cursor: pointer;
+  padding: 3px;
+  transition: 0.25s; }
+  .urltoken.numeric {
+    color: #00a0ff; }
+  .urltoken:hover {
+    opacity: 0.75;
+    transition: 0.25s; }
+
+.domainId {
+  background-color: transparent;
+  border: none;
+  color: #57a700;
+  display: inline-block; }
+
+.heading {
+  color: #ff6e00;
+  font-weight: bold;
+  font-size: 20px; }
+
+#stepContainer {
+  position: relative;
+  height: 70px;
+  background-color: #00cc00;
+  width: 482px; }
+  #stepContainer .heading {
+    color: #ffffff;
+    font-size: 16px; }
+
+.step {
+  width: auto;
+  padding: 10px;
+  margin: 2px 0;
+  height: 70px;
+  background-color: #00cc00;
+  opacity: 0;
+  display: none;
+  transition: 0.25s;
+  position: absolute;
+  top: 0;
+  left: 0; }
+  .step.show {
+    display: block;
+    opacity: 1;
+    height: auto;
+    transition: 0.25s; }
+
+ul {
+  list-style-type: disc;
+  padding-left: 0;
+  margin-left: 20px; }
+  ul li {
+    margin: 3px 0 3px 20px;
+    padding: 5px;
+    background: linear-gradient(90deg, #028e9b, rgba(0, 0, 0, 0));
+    font-size: 15px;
+    color: #00cc00; }
+    ul li:hover {
+      opacity: 0.85; }
+
+a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none; }
+
+.delButton {
+  float: right;
+  text-decoration: none;
+  color: #ff6e00;
+  font-weight: bold; }
+
+/*# sourceMappingURL=popup.css.map */

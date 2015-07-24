@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <title>Comic Tracker</title>
+    <link rel="stylesheet" type="text/css" href="styles/popup.min.css" />
+    <script src="libs/jquery-2.1.1.min.js"></script>
+    <script src="libs/require.js"></script>
+    <script src="app_loader.js"></script>
+    
+
+</head>
+<body>
+    <div id="wrapper">
+        <div id="addContainer">
+            <span class="heading">Comic Tracker</span>
+            <button id="addComic">+</button>
+            <div id="stepContainer">
+                <div id="step1" class="step">
+                    <div class="heading">Step 1. Enter Title</div>
+                    <input id="comicTitle" type="text"/><button id="saveTitle">Next</button>
+                </div>
+                <div id="step2" class="step">
+                    <div class="heading">Step 2. Tag Comic Name</div>
+                    <div id="urlselector"></div>
+                </div>
+                <div id="step3" class="step">
+                    <div class="heading">Step 3. Tag Page Identifier</div>
+                    <div id="pageselector"></div>
+                </div>
+            </div>
+        </div>
+        <div id="seriesList">
+
+        </div>
+    </div>
+</body>
+</html>
