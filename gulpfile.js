@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
-    sass = require('gulp-ruby-sass');
+    babel = require('gulp-babel'),
+    sass = require('gulp-sass');
 
 gulp.task('styles', function () {
     return gulp.src('src/styles/*.scss')
@@ -22,4 +23,10 @@ gulp.task('config', function () {
         .pipe(gulp.dest('build'));
 });
 
-gulp.task('build', ['styles', 'scripts', 'markup', 'config']);
+gulp.task('jsx', function () {
+    return gulp.src('src/*.jsx')
+        .pipe(babel())
+        .pipe(gulp.dest('build'));
+});
+
+gulp.task('default', ['styles', 'scripts', 'markup', 'config']);
